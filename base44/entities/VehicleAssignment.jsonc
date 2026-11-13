@@ -1,0 +1,110 @@
+{
+  "name": "VehicleAssignment",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "vehicle_type": {
+      "type": "string",
+      "enum": [
+        "government",
+        "private",
+        "feeder"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "green"
+      ]
+    },
+    "vehicle_registration": {
+      "type": "string"
+    },
+    "route_code": {
+      "type": "string"
+    },
+    "village_code": {
+      "type": "string"
+    },
+    "hub_code": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "feeder",
+        "extra",
+        "replacement"
+      ],
+      "enumColors": [
+        "gray",
+        "green",
+        "yellow",
+        "purple"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "accepted",
+        "declined",
+        "active",
+        "completed"
+      ],
+      "enumColors": [
+        "yellow",
+        "green",
+        "red",
+        "blue",
+        "gray"
+      ]
+    },
+    "passengers_expected": {
+      "type": "number"
+    },
+    "assigned_by": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "vehicle_registration",
+    "route_code"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

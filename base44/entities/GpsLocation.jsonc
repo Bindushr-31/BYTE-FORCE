@@ -1,0 +1,62 @@
+{
+  "name": "GpsLocation",
+  "type": "object",
+  "properties": {
+    "trip_code": {
+      "type": "string"
+    },
+    "vehicle_registration": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "speed_kmh": {
+      "type": "number"
+    },
+    "recorded_at": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "simulated",
+        "device"
+      ],
+      "enumColors": [
+        "yellow",
+        "green"
+      ]
+    }
+  },
+  "required": [
+    "trip_code",
+    "lat",
+    "lng"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

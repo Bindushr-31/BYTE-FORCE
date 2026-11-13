@@ -1,0 +1,92 @@
+{
+  "name": "BoardingEvent",
+  "type": "object",
+  "properties": {
+    "event_key": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "board",
+        "alight",
+        "cancel",
+        "refund",
+        "manual"
+      ],
+      "enumColors": [
+        "green",
+        "blue",
+        "red",
+        "purple",
+        "yellow"
+      ]
+    },
+    "ticket_id": {
+      "type": "string"
+    },
+    "trip_code": {
+      "type": "string"
+    },
+    "vehicle_registration": {
+      "type": "string"
+    },
+    "stop_code": {
+      "type": "string"
+    },
+    "passenger_count": {
+      "type": "number"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "conductor",
+        "device",
+        "manual",
+        "system"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "yellow",
+        "gray"
+      ]
+    },
+    "recorded_at": {
+      "type": "string"
+    },
+    "recorded_by": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_key",
+    "type",
+    "trip_code"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

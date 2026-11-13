@@ -1,0 +1,162 @@
+{
+  "name": "Trip",
+  "type": "object",
+  "properties": {
+    "trip_code": {
+      "type": "string"
+    },
+    "vehicle_type": {
+      "type": "string",
+      "enum": [
+        "government",
+        "private",
+        "feeder"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "green"
+      ]
+    },
+    "vehicle_registration": {
+      "type": "string"
+    },
+    "route_code": {
+      "type": "string"
+    },
+    "route_name": {
+      "type": "string"
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "morning",
+        "evening"
+      ],
+      "enumColors": [
+        "yellow",
+        "purple"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "active",
+        "completed",
+        "cancelled"
+      ],
+      "enumColors": [
+        "gray",
+        "green",
+        "blue",
+        "red"
+      ]
+    },
+    "scheduled_departure": {
+      "type": "string"
+    },
+    "progress": {
+      "type": "number"
+    },
+    "delay_min": {
+      "type": "number"
+    },
+    "capacity": {
+      "type": "number"
+    },
+    "tickets_issued": {
+      "type": "number"
+    },
+    "manual_count": {
+      "type": "number"
+    },
+    "exits": {
+      "type": "number"
+    },
+    "transfers": {
+      "type": "number"
+    },
+    "boarding_reports": {
+      "type": "number"
+    },
+    "unable_to_board": {
+      "type": "number"
+    },
+    "is_full": {
+      "type": "boolean"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "speed_kmh": {
+      "type": "number"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "hub_code": {
+      "type": "string"
+    },
+    "driver_name": {
+      "type": "string"
+    },
+    "last_gps_at": {
+      "type": "string"
+    },
+    "count_updated_at": {
+      "type": "string"
+    },
+    "started_at": {
+      "type": "string"
+    },
+    "ended_at": {
+      "type": "string"
+    },
+    "simulated": {
+      "type": "boolean"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "trip_code",
+    "vehicle_registration",
+    "route_code"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "name": "OccupancyRecord",
+  "type": "object",
+  "properties": {
+    "trip_code": {
+      "type": "string"
+    },
+    "vehicle_registration": {
+      "type": "string"
+    },
+    "tickets": {
+      "type": "number"
+    },
+    "manual_count": {
+      "type": "number"
+    },
+    "estimated_onboard": {
+      "type": "number"
+    },
+    "capacity": {
+      "type": "number"
+    },
+    "occupancy_pct": {
+      "type": "number"
+    },
+    "level": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "warning",
+        "full"
+      ],
+      "enumColors": [
+        "green",
+        "yellow",
+        "red"
+      ]
+    },
+    "source": {
+      "type": "string"
+    },
+    "recorded_at": {
+      "type": "string"
+    },
+    "recorded_by": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "trip_code"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

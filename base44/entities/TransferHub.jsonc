@@ -1,0 +1,65 @@
+{
+  "name": "TransferHub",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "platforms": {
+      "type": "number"
+    },
+    "daily_transfers": {
+      "type": "number"
+    },
+    "safe_transfer": {
+      "type": "boolean"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "code",
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

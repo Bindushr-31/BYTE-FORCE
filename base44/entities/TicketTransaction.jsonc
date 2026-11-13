@@ -1,0 +1,123 @@
+{
+  "name": "TicketTransaction",
+  "type": "object",
+  "properties": {
+    "ticket_id": {
+      "type": "string"
+    },
+    "trip_code": {
+      "type": "string"
+    },
+    "vehicle_registration": {
+      "type": "string"
+    },
+    "route_code": {
+      "type": "string"
+    },
+    "pass_code": {
+      "type": "string"
+    },
+    "student_name": {
+      "type": "string"
+    },
+    "from_stop": {
+      "type": "string"
+    },
+    "to_stop": {
+      "type": "string"
+    },
+    "passenger_count": {
+      "type": "number"
+    },
+    "distance_km": {
+      "type": "number"
+    },
+    "full_fare": {
+      "type": "number"
+    },
+    "concession_pct": {
+      "type": "number"
+    },
+    "concession_amount": {
+      "type": "number"
+    },
+    "payable_fare": {
+      "type": "number"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "qr",
+        "manual_id",
+        "cash"
+      ],
+      "enumColors": [
+        "green",
+        "blue",
+        "yellow"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "alighted",
+        "cancelled",
+        "refunded"
+      ],
+      "enumColors": [
+        "green",
+        "blue",
+        "red",
+        "purple"
+      ]
+    },
+    "conductor_id": {
+      "type": "string"
+    },
+    "issued_at": {
+      "type": "string"
+    },
+    "alighted_at": {
+      "type": "string"
+    },
+    "alighted_stop": {
+      "type": "string"
+    },
+    "cancellation_reason": {
+      "type": "string"
+    },
+    "issued_by": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "trip_code",
+    "payable_fare"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "name": "Village",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "road_type": {
+      "type": "string",
+      "enum": [
+        "highway",
+        "secondary",
+        "narrow",
+        "unpaved",
+        "blocked"
+      ],
+      "enumColors": [
+        "green",
+        "blue",
+        "yellow",
+        "yellow",
+        "red"
+      ]
+    },
+    "large_bus_allowed": {
+      "type": "boolean"
+    },
+    "students_count": {
+      "type": "number"
+    },
+    "hub_code": {
+      "type": "string"
+    },
+    "distance_to_hub_km": {
+      "type": "number"
+    },
+    "feeder_required": {
+      "type": "boolean"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "code",
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

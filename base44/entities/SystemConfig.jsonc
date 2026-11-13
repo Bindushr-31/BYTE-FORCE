@@ -1,0 +1,91 @@
+{
+  "name": "SystemConfig",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string"
+    },
+    "morning_peak_start": {
+      "type": "string"
+    },
+    "morning_peak_end": {
+      "type": "string"
+    },
+    "evening_peak_start": {
+      "type": "string"
+    },
+    "evening_peak_end": {
+      "type": "string"
+    },
+    "concession_pct": {
+      "type": "number"
+    },
+    "concession_eligibility": {
+      "type": "string"
+    },
+    "pass_validity_days": {
+      "type": "number"
+    },
+    "concession_vehicle_categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "warning_threshold": {
+      "type": "number"
+    },
+    "transfer_buffer_min": {
+      "type": "number"
+    },
+    "fare_base": {
+      "type": "number"
+    },
+    "fare_per_km": {
+      "type": "number"
+    },
+    "fare_minimum": {
+      "type": "number"
+    },
+    "ai_note": {
+      "type": "string"
+    },
+    "scenarios_run": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "key"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

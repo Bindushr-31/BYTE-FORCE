@@ -1,0 +1,67 @@
+{
+  "name": "PassengerCount",
+  "type": "object",
+  "properties": {
+    "trip_code": {
+      "type": "string"
+    },
+    "stop_code": {
+      "type": "string"
+    },
+    "boarded": {
+      "type": "number"
+    },
+    "exited": {
+      "type": "number"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "ticket",
+        "manual",
+        "volunteer",
+        "boarding",
+        "sensor"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "green",
+        "gray",
+        "yellow"
+      ]
+    },
+    "recorded_at": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "trip_code",
+    "source"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

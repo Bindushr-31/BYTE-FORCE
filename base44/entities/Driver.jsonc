@@ -1,0 +1,79 @@
+{
+  "name": "Driver",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "license_no": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "government",
+        "private",
+        "feeder"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "green"
+      ]
+    },
+    "vehicle_registration": {
+      "type": "string"
+    },
+    "operator_code": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "pending",
+        "suspended"
+      ],
+      "enumColors": [
+        "green",
+        "yellow",
+        "red"
+      ]
+    },
+    "permit_verified": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "code",
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

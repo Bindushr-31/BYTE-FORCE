@@ -1,0 +1,136 @@
+{
+  "name": "Incident",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "breakdown",
+        "road_block",
+        "overcrowding",
+        "accident",
+        "sos",
+        "complaint"
+      ],
+      "enumColors": [
+        "red",
+        "red",
+        "yellow",
+        "red",
+        "red",
+        "gray"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Reported",
+        "Verified",
+        "Action Required",
+        "Vehicle Assigned",
+        "Resolved"
+      ],
+      "enumColors": [
+        "red",
+        "yellow",
+        "purple",
+        "blue",
+        "green"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "enumColors": [
+        "green",
+        "yellow",
+        "red"
+      ]
+    },
+    "route_code": {
+      "type": "string"
+    },
+    "village_code": {
+      "type": "string"
+    },
+    "vehicle_registration": {
+      "type": "string"
+    },
+    "reported_by": {
+      "type": "string"
+    },
+    "reported_role": {
+      "type": "string"
+    },
+    "affected_passengers": {
+      "type": "number"
+    },
+    "resolution": {
+      "type": "string"
+    },
+    "assigned_vehicle": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "required": [
+    "code",
+    "type",
+    "title"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

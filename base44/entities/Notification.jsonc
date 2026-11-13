@@ -1,0 +1,159 @@
+{
+  "name": "Notification",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Bus Delay",
+        "Bus Cancellation",
+        "Route Change",
+        "Road Blockage",
+        "Bus Replacement",
+        "Schedule Change",
+        "Feeder Vehicle Update",
+        "General Announcement"
+      ],
+      "enumColors": [
+        "yellow",
+        "red",
+        "purple",
+        "red",
+        "blue",
+        "purple",
+        "green",
+        "gray"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "important",
+        "urgent"
+      ],
+      "enumColors": [
+        "gray",
+        "yellow",
+        "red"
+      ]
+    },
+    "audience": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "passenger",
+        "driver",
+        "operator",
+        "volunteer",
+        "all"
+      ],
+      "enumColors": [
+        "purple",
+        "blue",
+        "yellow",
+        "green",
+        "red",
+        "gray"
+      ]
+    },
+    "route_code": {
+      "type": "string"
+    },
+    "trip_code": {
+      "type": "string"
+    },
+    "village_code": {
+      "type": "string"
+    },
+    "vehicle_registration": {
+      "type": "string"
+    },
+    "stop_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "valid_from": {
+      "type": "string"
+    },
+    "expires_at": {
+      "type": "string"
+    },
+    "published_by": {
+      "type": "string"
+    },
+    "published_role": {
+      "type": "string"
+    },
+    "level": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warning",
+        "critical",
+        "success"
+      ],
+      "enumColors": [
+        "blue",
+        "yellow",
+        "red",
+        "green"
+      ]
+    },
+    "requires_ack": {
+      "type": "boolean"
+    },
+    "acknowledged": {
+      "type": "boolean"
+    },
+    "read": {
+      "type": "boolean"
+    },
+    "recipient_note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "message"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "name": "BusStop",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "number"
+    },
+    "lng": {
+      "type": "number"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "stop",
+        "hub",
+        "college"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "green"
+      ]
+    },
+    "village_code": {
+      "type": "string"
+    },
+    "route_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "students_waiting": {
+      "type": "number"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "code",
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

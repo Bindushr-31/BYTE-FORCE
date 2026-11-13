@@ -1,0 +1,91 @@
+{
+  "name": "StudentPass",
+  "type": "object",
+  "properties": {
+    "pass_code": {
+      "type": "string"
+    },
+    "student_name": {
+      "type": "string"
+    },
+    "student_email": {
+      "type": "string"
+    },
+    "college": {
+      "type": "string"
+    },
+    "village_code": {
+      "type": "string"
+    },
+    "home_stop_code": {
+      "type": "string"
+    },
+    "vehicle_categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "valid_from": {
+      "type": "string"
+    },
+    "valid_to": {
+      "type": "string"
+    },
+    "concession_pct": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "suspended",
+        "expired"
+      ],
+      "enumColors": [
+        "green",
+        "yellow",
+        "red"
+      ]
+    },
+    "cached_validity": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "pass_code",
+    "student_name"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.student_email": "{{user.email}}"
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

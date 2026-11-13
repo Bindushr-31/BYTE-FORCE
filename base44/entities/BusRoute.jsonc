@@ -1,0 +1,109 @@
+{
+  "name": "BusRoute",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "main",
+        "secondary",
+        "feeder"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "green"
+      ]
+    },
+    "road_class": {
+      "type": "string",
+      "enum": [
+        "highway",
+        "secondary",
+        "village"
+      ],
+      "enumColors": [
+        "blue",
+        "gray",
+        "green"
+      ]
+    },
+    "distance_km": {
+      "type": "number"
+    },
+    "duration_min": {
+      "type": "number"
+    },
+    "large_bus_allowed": {
+      "type": "boolean"
+    },
+    "hub_code": {
+      "type": "string"
+    },
+    "village_code": {
+      "type": "string"
+    },
+    "stops": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "disrupted"
+      ],
+      "enumColors": [
+        "green",
+        "red"
+      ]
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "code",
+    "name",
+    "kind"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

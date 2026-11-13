@@ -1,0 +1,90 @@
+{
+  "name": "FeederVehicle",
+  "type": "object",
+  "properties": {
+    "registration": {
+      "type": "string"
+    },
+    "capacity": {
+      "type": "number"
+    },
+    "operator_code": {
+      "type": "string"
+    },
+    "driver_name": {
+      "type": "string"
+    },
+    "village_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hub_code": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "maintenance",
+        "cancelled"
+      ],
+      "enumColors": [
+        "green",
+        "yellow",
+        "red"
+      ]
+    },
+    "availability": {
+      "type": "boolean"
+    },
+    "permit_verified": {
+      "type": "boolean"
+    },
+    "approved": {
+      "type": "boolean"
+    },
+    "vehicle_model": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "registration",
+    "capacity"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "user"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

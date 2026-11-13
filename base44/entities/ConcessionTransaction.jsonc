@@ -1,0 +1,83 @@
+{
+  "name": "ConcessionTransaction",
+  "type": "object",
+  "properties": {
+    "pass_code": {
+      "type": "string"
+    },
+    "student_name": {
+      "type": "string"
+    },
+    "trip_code": {
+      "type": "string"
+    },
+    "vehicle_registration": {
+      "type": "string"
+    },
+    "vehicle_type": {
+      "type": "string",
+      "enum": [
+        "government",
+        "private",
+        "feeder"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "green"
+      ]
+    },
+    "full_fare": {
+      "type": "number"
+    },
+    "concession_pct": {
+      "type": "number"
+    },
+    "concession_amount": {
+      "type": "number"
+    },
+    "payable_fare": {
+      "type": "number"
+    },
+    "settlement_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "settled"
+      ],
+      "enumColors": [
+        "yellow",
+        "green"
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "pass_code",
+    "trip_code"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

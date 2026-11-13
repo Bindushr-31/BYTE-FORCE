@@ -1,0 +1,68 @@
+{
+  "name": "Operator",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "government",
+        "private",
+        "feeder"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "green"
+      ]
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "pending"
+      ],
+      "enumColors": [
+        "green",
+        "yellow"
+      ]
+    },
+    "fleet_size": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "code",
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

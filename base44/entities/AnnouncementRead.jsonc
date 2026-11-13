@@ -1,0 +1,63 @@
+{
+  "name": "AnnouncementRead",
+  "type": "object",
+  "properties": {
+    "notification_id": {
+      "type": "string"
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "read_at": {
+      "type": "string"
+    },
+    "dismissed": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "notification_id",
+    "user_email"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.user_email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "data.user_email": "{{user.email}}"
+    },
+    "update": {
+      "$or": [
+        {
+          "data.user_email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "data.user_email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

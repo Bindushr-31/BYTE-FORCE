@@ -1,0 +1,82 @@
+{
+  "name": "Permit",
+  "type": "object",
+  "properties": {
+    "permit_no": {
+      "type": "string"
+    },
+    "vehicle_registration": {
+      "type": "string"
+    },
+    "vehicle_type": {
+      "type": "string",
+      "enum": [
+        "government",
+        "private",
+        "feeder"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "green"
+      ]
+    },
+    "capacity_authorized": {
+      "type": "number"
+    },
+    "valid_from": {
+      "type": "string"
+    },
+    "valid_to": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "pending",
+        "rejected"
+      ],
+      "enumColors": [
+        "green",
+        "yellow",
+        "red"
+      ]
+    },
+    "operator_code": {
+      "type": "string"
+    },
+    "document_note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "permit_no",
+    "vehicle_registration"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
